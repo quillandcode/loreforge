@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background: #1a1a1a;
+  color: #d0d0d0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #0a0a0a;
+  border-bottom: 2px solid #333;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+header p {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* Status Indicator */
+.status-indicator {
+  font-size: 12px;
+  color: #e67e22;
+  border: 1px solid #e67e22;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.status-indicator.ready {
+  color: #2ecc71;
+  border-color: #2ecc71;
+}
+
+.main-container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.pane {
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.left-pane {
+  flex: 1;
+  background: #1a1a1a;
+  border-right: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.resizer {
+  width: 8px;
+  background: #0a0a0a;
+  cursor: col-resize;
+  border-left: 1px solid #444;
+  border-right: 1px solid #444;
+  position: relative;
+}
+
+.resizer:hover {
+  background: #222;
+}
+
+.right-pane {
+  flex: 1;
+  background: #151515;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  flex: 1;
+  background: #0a0a0a;
+  color: #d0d0d0;
+  border: 2px solid #333;
+  padding: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  line-height: 1.6;
+}
+
+textarea:focus {
+  border-color: #555;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+button {
+  background: #0a0a0a;
+  color: #fff;
+  border: 2px solid #444;
+  padding: 12px 30px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: #222;
+  border-color: #666;
+}
+
+button:active {
+  background: #000;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.anvil-content {
+  line-height: 1.8;
+  color: #999;
+  white-space: pre-wrap; /* Preserves newlines in display mode */
+  flex: 1;
+  overflow-y: auto;
+}
+
+.anvil-editor {
+  display: none; /* Hidden by default */
+  flex: 1;
+  border: 1px dashed #444;
+}
+
+.anvil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Anvil Selector Styling */
+#anvilSelect {
+  background: #0a0a0a;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 5px;
+  font-family: 'Courier New', monospace;
+  margin-left: 10px;
+}
+
+#newAnvilBtn {
+  padding: 4px 10px;
+  margin-left: 5px;
+  min-width: 30px;
+}
+
+.edit-link {
+  color: #888;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid #444;
+  padding: 8px 16px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.edit-link:hover {
+  color: #fff;
+  border-color: #666;
+  background: #1a1a1a;
+}
+
+.warnings-section {
+  background: #0a0a0a;
+  border-top: 2px solid #333;
+  padding: 30px;
+  height: 250px; /* Fixed height for scrolling */
+  overflow-y: auto;
+}
+
+.warnings-section h3 {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.warnings-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.warnings-section li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #1a1a1a;
+  border-left: 3px solid #e74c3c; /* Red for warnings */
+  color: #ccc;
+  font-size: 13px;
+}
+
+.warnings-section li.success {
+  border-left: 3px solid #2ecc71; /* Green for success */
+}
+
+.warnings-section li.system {
+  border-left: 3px solid #3498db; /* Blue for system messages */
+}
+
+.warnings-section li:empty {
+  display: none;
+}
+
+.placeholder {
+  color: #555;
+  font-style: italic;
+}
