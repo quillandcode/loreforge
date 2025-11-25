@@ -8,249 +8,249 @@ body {
   font-family: 'Courier New', monospace;
   background: #1a1a1a;
   color: #d0d0d0;
-  height: 100vh;
+  height: 100vh;       /* Force full viewport height */
   display: flex;
   flex-direction: column;
+  overflow: hidden;    /* Prevent body scroll, we scroll inside panes */
 }
 
+/* --- HEADER (Fixed Height) --- */
 header {
   background: #0a0a0a;
   border-bottom: 2px solid #333;
-  padding: 20px 30px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 0 0 auto;      /* Don't grow or shrink */
 }
 
-header h1 {
-  font-size: 28px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #fff;
-  text-transform: uppercase;
-}
+header h1 { font-size: 20px; font-weight: bold; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+header p { font-size: 10px; color: #888; margin-left: 10px; display:inline-block;}
 
-header p {
-  margin-top: 5px;
-  font-size: 12px;
-  color: #888;
-  letter-spacing: 1px;
-}
-
-/* Status Indicator */
-.status-indicator {
-  font-size: 12px;
-  color: #e67e22;
-  border: 1px solid #e67e22;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-.status-indicator.ready {
-  color: #2ecc71;
-  border-color: #2ecc71;
-}
-
+/* --- MAIN CONTAINER (Flexible Height) --- */
 .main-container {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
+  flex: 1 1 auto;      /* Grow to fill all space between Header and Warnings */
+  display: flex;       /* Layout Left/Right panes */
+  overflow: hidden;    /* Important: Keeps scrollbars inside the panes */
+  min-height: 0;       /* detailed flexbox fix to allow nested scrolling */
 }
 
-.pane {
-  overflow-y: auto;
-  padding: 30px;
+/* --- PANES (Left & Right) --- */
+.left-pane, .right-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;        /* Fill the .main-container */
+  padding: 20px;
+  overflow: hidden;    /* Prevent pane itself from scrolling, we scroll the textarea */
 }
 
 .left-pane {
-  flex: 1;
+  flex: 1;             /* Default width split */
   background: #1a1a1a;
   border-right: 1px solid #333;
-  display: flex;
-  flex-direction: column;
-}
-
-.resizer {
-  width: 8px;
-  background: #0a0a0a;
-  cursor: col-resize;
-  border-left: 1px solid #444;
-  border-right: 1px solid #444;
-  position: relative;
-}
-
-.resizer:hover {
-  background: #222;
 }
 
 .right-pane {
   flex: 1;
   background: #151515;
-  display: flex;
-  flex-direction: column;
 }
 
+/* --- RESIZER --- */
+.resizer {
+  width: 6px;
+  background: #0a0a0a;
+  cursor: col-resize;
+  border-left: 1px solid #444;
+  border-right: 1px solid #444;
+  flex: 0 0 auto;      /* Fixed width */
+}
+.resizer:hover { background: #222; }
+
+/* --- HEADINGS --- */
 h2 {
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  color: #fff;
-  text-transform: uppercase;
-  border-bottom: 2px solid #333;
-  padding-bottom: 10px;
-}
-
-textarea {
-  width: 100%;
-  flex: 1;
-  background: #0a0a0a;
-  color: #d0d0d0;
-  border: 2px solid #333;
-  padding: 15px;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  resize: none;
-  outline: none;
-  line-height: 1.6;
-}
-
-textarea:focus {
-  border-color: #555;
-}
-
-.button-container {
-  margin-top: 20px;
-}
-
-button {
-  background: #0a0a0a;
-  color: #fff;
-  border: 2px solid #444;
-  padding: 12px 30px;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.2s;
-}
-
-button:hover {
-  background: #222;
-  border-color: #666;
-}
-
-button:active {
-  background: #000;
-}
-
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.anvil-content {
-  line-height: 1.8;
-  color: #999;
-  white-space: pre-wrap; /* Preserves newlines in display mode */
-  flex: 1;
-  overflow-y: auto;
-}
-
-.anvil-editor {
-  display: none; /* Hidden by default */
-  flex: 1;
-  border: 1px dashed #444;
-}
-
-.anvil-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/* Anvil Selector Styling */
-#anvilSelect {
-  background: #0a0a0a;
-  color: #fff;
-  border: 1px solid #444;
-  padding: 5px;
-  font-family: 'Courier New', monospace;
-  margin-left: 10px;
-}
-
-#newAnvilBtn {
-  padding: 4px 10px;
-  margin-left: 5px;
-  min-width: 30px;
-}
-
-.edit-link {
-  color: #888;
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 1px solid #444;
-  padding: 8px 16px;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.edit-link:hover {
-  color: #fff;
-  border-color: #666;
-  background: #1a1a1a;
-}
-
-.warnings-section {
-  background: #0a0a0a;
-  border-top: 2px solid #333;
-  padding: 30px;
-  height: 250px; /* Fixed height for scrolling */
-  overflow-y: auto;
-}
-
-.warnings-section h3 {
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1px;
   margin-bottom: 15px;
   color: #fff;
   text-transform: uppercase;
+  flex: 0 0 auto;      /* Don't shrink */
 }
 
-.warnings-section ul {
-  list-style: none;
-  padding: 0;
+/* --- TEXTAREAS (The Fix) --- */
+textarea {
+  width: 100%;
+  flex: 1 1 auto;      /* GROW to fill all vertical space */
+  background: #0a0a0a;
+  color: #d0d0d0;
+  border: 1px solid #333;
+  padding: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  resize: none;        /* Disable manual drag handle */
+  outline: none;
+  line-height: 1.6;
+  overflow-y: auto;    /* Scrollbar inside the textarea */
 }
 
+textarea:focus { border-color: #555; }
+
+/* --- BUTTONS & CONTROLS --- */
+.button-container {
+  margin-top: 15px;
+  flex: 0 0 auto;      /* Keep fixed at bottom of pane */
+}
+
+button {
+  background: #0a0a0a;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 10px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+button:hover { background: #333; }
+button:disabled { opacity: 0.5; }
+
+/* --- ANVIL SPECIFIC UI --- */
+.anvil-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+}
+
+#anvilSelect { background: #0a0a0a; color: #fff; border: 1px solid #444; margin-left: 10px; font-family: inherit;}
+#newAnvilBtn { padding: 2px 6px; margin-left: 5px; }
+
+.editing-label { 
+  font-size: 11px; color: #2ecc71; text-transform: uppercase; 
+  border: 1px solid #2ecc71; padding: 2px 6px; border-radius: 4px;
+}
+
+.category-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+  flex: 0 0 auto;
+}
+
+.cat-item {
+  display: flex;
+  align-items: center;
+  background: #0f0f0f;
+  border: 1px solid #333;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.cat-item.active-tab { border-color: #2ecc71; background: #1a2a1a; }
+
+.cat-label {
+  font-size: 11px; cursor: pointer; margin: 0 5px; user-select: none;
+}
+.cat-label:hover { color: #fff; }
+
+.info-icon {
+  font-size: 10px; color: #666; cursor: help;
+  border: 1px solid #444; border-radius: 50%;
+  width: 14px; height: 14px;
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+
+/* Tooltip */
+.info-icon:hover::after {
+  content: attr(data-tooltip);
+  position: absolute; bottom: 150%; left: 50%; transform: translateX(-50%);
+  background: #333; color: #fff; padding: 8px; width: 200px;
+  font-size: 11px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  z-index: 100; pointer-events: none; text-align: left;
+}
+
+/* --- WARNINGS (Fixed Height) --- */
+.warnings-section {
+  background: #0a0a0a;
+  border-top: 2px solid #333;
+  padding: 15px;
+  height: 180px;       /* Fixed height */
+  flex: 0 0 auto;      /* Don't shrink/grow */
+  overflow-y: auto;
+}
+
+.warnings-section h3 { font-size: 14px; margin-bottom: 10px; color: #fff; }
+.warnings-section ul { list-style: none; }
+.warnings-section li { padding: 8px; margin-bottom: 5px; background: #1a1a1a; border-left: 3px solid #e74c3c; color: #ccc; font-size: 12px; }
+.warnings-section li.success { border-left: 3px solid #2ecc71; }
+.warnings-section li.system { border-left: 3px solid #3498db; }
+
+/* --- STATUS INDICATOR --- */
+.status-indicator {
+  font-size: 10px; color: #e67e22; border: 1px solid #e67e22;
+  padding: 4px 8px; border-radius: 4px;
+}
+.status-indicator.ready { color: #2ecc71; border-color: #2ecc71; }
+
+/* --- CATEGORY WARNING STYLES --- */
+
+/* Base Warning Style (Red/Default) */
 .warnings-section li {
-  padding: 10px;
-  margin-bottom: 8px;
-  background: #1a1a1a;
-  border-left: 3px solid #e74c3c; /* Red for warnings */
-  color: #ccc;
-  font-size: 13px;
+  border-left: 3px solid #e74c3c; /* Red */
 }
 
-.warnings-section li.success {
-  border-left: 3px solid #2ecc71; /* Green for success */
+/* 1. 🌿 Nature (Cyan) */
+.warnings-section li.nature {
+  border-left-color: #00bcd4;
+}
+.warnings-section li.nature::before {
+  content: "⚛️ "; /* Auto-adds icon */
 }
 
+/* 2. ✨ Magic (Purple) */
+.warnings-section li.magic {
+  border-left-color: #9b59b6;
+}
+.warnings-section li.magic::before {
+  content: "✨ ";
+}
+
+/* 3. 🛡️ Tech (Orange) */
+.warnings-section li.tech {
+  border-left-color: #e67e22;
+}
+.warnings-section li.tech::before {
+  content: "🛡️ ";
+}
+
+/* 4. 👑 Society (Gold) */
+.warnings-section li.society {
+  border-left-color: #f1c40f;
+}
+.warnings-section li.society::before {
+  content: "👑 ";
+}
+
+/* 5. 📜 Lore (Brown/Sienna) */
+.warnings-section li.lore {
+  border-left-color: #a0522d;
+}
+.warnings-section li.lore::before {
+  content: "📜 ";
+}
+
+/* System Messages (Blue) */
 .warnings-section li.system {
-  border-left: 3px solid #3498db; /* Blue for system messages */
+  border-left-color: #3498db;
 }
 
-.warnings-section li:empty {
-  display: none;
-}
-
-.placeholder {
-  color: #555;
-  font-style: italic;
+/* Success Messages (Green) */
+.warnings-section li.success {
+  border-left-color: #2ecc71;
 }
