@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loreforge - Worldbuilding Engine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div>
+        <h1>⚒ Loreforge</h1>
+        <p>Worldbuilding Engine</p>
+    </div>
+    <div id="engineStatus" class="status-indicator">Initializing Engine...</div>
+  </header>
+
+  <div class="main-container">
+    <div class="left-pane">
+      <h2>The Hammer</h2>
+      <textarea id="storyText" placeholder="Write your story here... The Hammer will beat it against the Anvil to check for cracks."></textarea>
+      <div class="button-container">
+        <button id="runHammer" disabled>Run Hammer</button>
+      </div>
+    </div>
+
+    <div class="resizer" id="resizer"></div>
+
+    <div class="right-pane pane">
+      <div class="anvil-header">
+        <div style="display:flex; align-items:center;">
+            <h2>The Anvil</h2>
+            <select id="anvilSelect"></select>
+            <button id="newAnvilBtn">+</button>
+        </div>
+        <a href="#" class="edit-link" id="editAnvil">Edit</a>
+      </div>
+      
+      <div id="anvilDisplay" class="anvil-content"></div>
+      
+      <textarea id="anvilEditor" class="anvil-editor" placeholder="Define your world rules here. (e.g. 'Magic requires blood', 'Gravity is weak', 'The King is dead')"></textarea>
+    </div>
+  </div>
+
+  <div class="warnings-section">
+    <h3>Warnings:</h3>
+    <ul id="warningsList">
+      <li class="system">Welcome to Loreforge. Please wait while the AI Engine loads.</li>
+    </ul>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
