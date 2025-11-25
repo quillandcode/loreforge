@@ -17,8 +17,8 @@
 
   <div class="main-container">
     <div class="left-pane">
-      <h2>The Hammer</h2>
-      <textarea id="storyText" placeholder="Write your story here... The Hammer will beat it against the Anvil to check for cracks."></textarea>
+      <h2>The Hammer (Story)</h2>
+      <textarea id="storyText" placeholder="Write your story here..."></textarea>
       <div class="button-container">
         <button id="runHammer" disabled>Run Hammer</button>
       </div>
@@ -27,25 +27,26 @@
     <div class="resizer" id="resizer"></div>
 
     <div class="right-pane pane">
-      <div class="anvil-header">
+      <div class="anvil-header-row">
         <div style="display:flex; align-items:center;">
             <h2>The Anvil</h2>
             <select id="anvilSelect"></select>
             <button id="newAnvilBtn">+</button>
         </div>
-        <a href="#" class="edit-link" id="editAnvil">Edit</a>
+        <div id="activeCategoryLabel" class="editing-label">Editing: Physics</div>
       </div>
+
+      <div class="category-strip" id="categoryStrip">
+        </div>
       
-      <div id="anvilDisplay" class="anvil-content"></div>
-      
-      <textarea id="anvilEditor" class="anvil-editor" placeholder="Define your world rules here. (e.g. 'Magic requires blood', 'Gravity is weak', 'The King is dead')"></textarea>
+      <textarea id="anvilEditor" class="anvil-editor" placeholder="Select a category above and define your rules..."></textarea>
     </div>
   </div>
 
   <div class="warnings-section">
     <h3>Warnings:</h3>
     <ul id="warningsList">
-      <li class="system">Welcome to Loreforge. Please wait while the AI Engine loads.</li>
+      <li class="system">Welcome to Loreforge. Select categories in the Anvil to check your story against specific rules.</li>
     </ul>
   </div>
 
