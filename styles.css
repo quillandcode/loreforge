@@ -205,12 +205,12 @@ button:disabled { opacity: 0.5; }
   border-left: 3px solid #e74c3c; /* Red */
 }
 
-/* 1. ⚛️ Physics (Cyan) */
-.warnings-section li.physics {
+/* 1. 🌿 Nature (Cyan) */
+.warnings-section li.nature {
   border-left-color: #00bcd4;
 }
-.warnings-section li.physics::before {
-  content: "⚛️ "; /* Auto-adds icon */
+.warnings-section li.nature::before {
+  content: "🌿 "; /* Auto-adds icon */
 }
 
 /* 2. ✨ Magic (Purple) */

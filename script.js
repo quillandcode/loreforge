@@ -291,5 +291,4 @@ renderAnvilSelect();
 renderCategories();
 switchTab('nature'); // Start on Nature
 autoLoad();
-
 initLLM();
