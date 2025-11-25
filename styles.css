@@ -197,3 +197,60 @@ button:disabled { opacity: 0.5; }
   padding: 4px 8px; border-radius: 4px;
 }
 .status-indicator.ready { color: #2ecc71; border-color: #2ecc71; }
+
+/* --- CATEGORY WARNING STYLES --- */
+
+/* Base Warning Style (Red/Default) */
+.warnings-section li {
+  border-left: 3px solid #e74c3c; /* Red */
+}
+
+/* 1. ⚛️ Physics (Cyan) */
+.warnings-section li.physics {
+  border-left-color: #00bcd4;
+}
+.warnings-section li.physics::before {
+  content: "⚛️ "; /* Auto-adds icon */
+}
+
+/* 2. ✨ Magic (Purple) */
+.warnings-section li.magic {
+  border-left-color: #9b59b6;
+}
+.warnings-section li.magic::before {
+  content: "✨ ";
+}
+
+/* 3. 🛡️ Tech (Orange) */
+.warnings-section li.tech {
+  border-left-color: #e67e22;
+}
+.warnings-section li.tech::before {
+  content: "🛡️ ";
+}
+
+/* 4. 👑 Society (Gold) */
+.warnings-section li.society {
+  border-left-color: #f1c40f;
+}
+.warnings-section li.society::before {
+  content: "👑 ";
+}
+
+/* 5. 📜 Lore (Brown/Sienna) */
+.warnings-section li.lore {
+  border-left-color: #a0522d;
+}
+.warnings-section li.lore::before {
+  content: "📜 ";
+}
+
+/* System Messages (Blue) */
+.warnings-section li.system {
+  border-left-color: #3498db;
+}
+
+/* Success Messages (Green) */
+.warnings-section li.success {
+  border-left-color: #2ecc71;
+}
