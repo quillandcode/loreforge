@@ -2,7 +2,7 @@ import * as webllm from "https://esm.run/@mlc-ai/web-llm";
 
 // --- CONFIG & STATE ---
 const CATEGORIES = {
-    nature: { label: "⚛️ Nature", desc: "Laws of nature, gravity, weather, biology, and environment." },
+    nature: { label: "🌿 Nature", desc: "Laws of nature, gravity, weather, biology, and environment." },
     magic: { label: "✨ Magic", desc: "Spells, mana costs, limitations, and supernatural rules." },
     tech: { label: "🛡️ Tech", desc: "Weapons, tools, transportation, and technology levels." },
     society: { label: "👑 Society", desc: "Laws, hierarchy, etiquette, currency, and culture." },
@@ -291,4 +291,5 @@ renderAnvilSelect();
 renderCategories();
 switchTab('nature'); // Start on Nature
 autoLoad();
+
 initLLM();
