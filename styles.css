@@ -210,7 +210,7 @@ button:disabled { opacity: 0.5; }
   border-left-color: #00bcd4;
 }
 .warnings-section li.nature::before {
-  content: "⚛️ "; /* Auto-adds icon */
+  content: "🌿 "; /* Auto-adds icon */
 }
 
 /* 2. ✨ Magic (Purple) */
